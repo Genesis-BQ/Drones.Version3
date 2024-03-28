@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Drones Blue and White Robotics</title>
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="caja">
+            <a href="#"><h1><img src="~/Logo/logo-blanco.png" width="190" height="190"></h1></a>
+            <!--<nav>
+                <ul>
+                    <li><a href="@Url.Action("Home", "Home")">Home</a></li>-->
+            <!--No puede acceder por las paginas esta bloqueas-->
+            <!--</ul>
+            </nav>-->
+        </div>
+    </header>
+    <main class="formulario">
+        <h2 class="titulo-login">Login Drones Blue and White Robotics</h2>
+        <form method="post" action="/Home/Validarlogin">
+            <label for="identificacion" class="Label">Identificación:</label>
+            <input type="text" id="identificacion" name="identificacion" class="identificacion">
+            <label for="contrasena" class="Label">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" class="contrasena"><br /><br />
+            <input type="checkbox" id="mostrarContrasena"> Mostrar contraseña<br /><br />
+            <p>Creación de cuenta <a href="@Url.Action("Registrar", "Home")">Registrar</a></p><br /><br />
+            <p>Restablecer contraseña <a href="@Url.Action("RecuperarContraseña", "Home")">Restablecer Contraseña</a></p><br /><br />
+            @if (!string.IsNullOrEmpty(ViewBag.MensajeError))
+            {
+                <div style="color: red;">
+                    @ViewBag.MensajeError
+                </div>
+            }
+            <button type="submit" class="enviar-login">Iniciar sesión</button>
+        </form>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".enviar-login").on({
+                mouseenter: function () {
+                    $(this).css("background-color", "#c78c19");
+                    $(this).css("color", "white");
+                    $(this).css("transform", "scale(1.2)");
+                    $(this).css("border-radius", "20px");
+                    $(this).css("font-size", "34px"); // Ajusta el radio de las esquinas aquí
+                },
+                mouseleave: function () {
+                    $(this).css("background-color", "#000000");
+                    $(this).css("transform", "scale(1)");
+                    $(this).css("border-radius", "10px"); // Vuelve al radio de las esquinas original
+                }
+            });
+
+            // Código adicional para alternar la visibilidad de la contraseña
+            $("#mostrarContrasena").on("change", function () {
+                var contrasenaInput = $("#contrasena");
+                contrasenaInput.attr("type", this.checked ? "text" : "password");
+            });
+        });
+    </script>
+</body>
+</html>

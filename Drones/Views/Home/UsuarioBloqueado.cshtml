@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Usuario Bloqueado</title>
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/Bloqueo.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Usuario Bloqueado</h1>
+        @if (Session["TiempoRestante"] != null)
+        {
+            <p>Tu cuenta ha sido bloqueada debido a múltiples intentos de inicio de sesión fallidos.</p>
+            <p>Por favor, inténtalo de nuevo después de <span id="tiempo-restante">@Session["TiempoRestante"]</span>.</p>
+        }
+        else
+        {
+            <p>Tu cuenta ha sido bloqueada debido a múltiples intentos de inicio de sesión fallidos.</p>
+            <p>Por favor, inténtalo de nuevo más tarde.</p>
+        }
+        <p>Si crees que esto es un error, por favor contacta al administrador del sistema.</p>
+    </div>
+    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+        <div class="wheel"></div>
+        <div class="hamster">
+            <div class="hamster__body">
+                <div class="hamster__head">
+                    <div class="hamster__ear"></div>
+                    <div class="hamster__eye"></div>
+                    <div class="hamster__nose"></div>
+                </div>
+                <div class="hamster__limb hamster__limb--fr"></div>
+                <div class="hamster__limb hamster__limb--fl"></div>
+                <div class="hamster__limb hamster__limb--br"></div>
+                <div class="hamster__limb hamster__limb--bl"></div>
+                <div class="hamster__tail"></div>
+            </div>
+        </div>
+        <div class="spoke"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var tiempoRestante = '@Session["TiempoRestante"]';
+            if (tiempoRestante) {
+                var intervalo = setInterval(function() {
+                    var tiempoRestanteArray = tiempoRestante.split(":");
+                    var minutos = parseInt(tiempoRestanteArray[0]);
+                    var segundos = parseInt(tiempoRestanteArray[1]);
+
+                    var tiempoTotal = minutos * 60 + segundos;
+
+                    if (tiempoTotal <= 0) {
+                        clearInterval(intervalo);
+                        window.location.href = '@Url.Action("Index", "Home")'; // Redirige al inicio de sesión
+                    } else {
+                        tiempoTotal--;
+                        var minutosActualizados = Math.floor(tiempoTotal / 60);
+                        var segundosActualizados = tiempoTotal % 60;
+                        tiempoRestante = minutosActualizados.toString().padStart(2, '0') + ':' + segundosActualizados.toString().padStart(2, '0');
+                        $('#tiempo-restante').text(tiempoRestante);
+                    }
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

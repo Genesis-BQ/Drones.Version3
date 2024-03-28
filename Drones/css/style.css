@@ -1,0 +1,81 @@
+﻿body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: url(../Imagenes/incio.jpg) center center fixed;
+    background-size: cover;
+}
+
+header {
+    background-color: #000000;
+    padding: 20px 0;
+}
+
+.caja {
+    max-width: 940px;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.formulario {
+    width: 90%; /* Ajusta el ancho del formulario al 90% del contenedor */
+    max-width: 510px; /* Establece el ancho máximo del formulario */
+    position: relative;
+    margin: 50px auto;
+    background-color: rgba(169, 169, 169, 0.5);
+    padding: 10px;
+    border-radius: 15px;
+}
+
+form {
+    margin: 40px 0;
+    text-align: center;
+}
+
+    form label,
+    form legend {
+        display: block;
+        font-size: 20px;
+        margin: 0 0 10px;
+        font-weight: bold;
+        color: white;
+    }
+
+.identificacion,
+.contrasena {
+    width: 50%;
+}
+
+
+.titulo-login {
+    text-align: center;
+    font-size: 34px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.enviar-login {
+    width: 40%;
+    padding: 20px 0;
+    font-weight: bold;
+    color: white;
+    background: #000000;
+    border: none;
+    border-radius: 5px;
+    transition: 5s all;
+    cursor: pointer;
+}
+
+/* Media query para tamaños de pantalla de 480px a 768px */
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+    .formulario {
+        width: 90%;
+    }
+
+    .enviar-login {
+        width: 100%; 
+    }
+}

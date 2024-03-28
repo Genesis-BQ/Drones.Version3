@@ -1,0 +1,103 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cambiar Contraseña</title>
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/Token.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Cambiar Contraseña</h2>
+
+        @if (!string.IsNullOrEmpty(ViewBag.MensajeError))
+        {
+            <p style="color: red;">@ViewBag.MensajeError</p>
+        }
+
+        @if (!string.IsNullOrEmpty(ViewBag.Mensaje))
+        {
+            <p style="color: green;">@ViewBag.Mensaje</p>
+        }
+
+    <form action="/Home/RestablecerContraseña" method="post">
+        @Html.AntiForgeryToken()
+
+        <div>
+            <label for="NuevaContraseña">Nueva Contraseña:</label>
+            <input type="password" id="NuevaContraseña" name="NuevaContraseña" required><br /><br />
+            <span id="caracteristicasContraseña"></span><br /><br />
+            <label for="contrasena"> Confirmar contraseña</label>
+            <input type="password" id="ConfirmarContraseña" name="ConfirmarContraseña" required>
+            <span id="errorConfirmarContraseña" class="text-danger"></span>
+        </div>
+
+        <div class="token-button">
+            <button id="tokenButton" type="submit">Cambiar Contraseña</button> <br />
+            <a href="@Url.Action("Index", "Home")">Login</a><br /><br />
+        </div>
+        <div class="back-link">
+            <a href="@Url.Action("VerficarCodigo", "Home")">Atrás</a>
+        </div>
+    </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Efecto de desvanecimiento al cargar la página
+            $(".formulario").hide().fadeIn(1000);
+
+            // Efecto de resaltado al enfocar un campo de entrada
+            $("input[type=text], input[type=password]").focus(function () {
+                $(this).animate({ backgroundColor: "#f6eafd" }, 500);
+            });
+
+            // Efecto de sacudida al enviar el formulario con campos vacíos o contraseñas no coincidentes
+            $("form").submit(function (e) {
+                var contraseña = $("#NuevaContraseña").val();
+                var confirmarContraseña = $("#ConfirmarContraseña").val();
+
+                // Verificar si las contraseñas no coinciden
+                if (contraseña !== confirmarContraseña) {
+                    e.preventDefault();
+                    $("#errorConfirmarContraseña").text("Las contraseñas no coinciden.");
+                    $("#ConfirmarContraseña").css("border-color", "red");
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var contraseñaInput = $("#NuevaContraseña");
+            var caracteristicasContraseña = $("#caracteristicasContraseña");
+
+            // Efecto de resaltado al enfocar un campo de entrada
+            $("input[type=password]").focus(function () {
+                $(this).animate({ backgroundColor: "#f6eafd" }, 500);
+            });
+
+            // Actualizar las características de la contraseña mientras se escribe
+            contraseñaInput.on('input', function () {
+                var contraseña = contraseñaInput.val();
+                var tieneMayuscula = /[A-Z]/.test(contraseña);
+                var tieneMinuscula = /[a-z]/.test(contraseña);
+                var soloSimbolosPermitidos = /[\*#]/.test(contraseña);
+                var tieneNumero = /\d/.test(contraseña);
+
+                var mensaje = 'Contraseña:';
+                mensaje += tieneMayuscula ? ' ✔ Mayúscula' : ' ❌ Mayúscula';
+                mensaje += tieneMinuscula ? ' ✔ Minúscula' : ' ❌ Minúscula';
+                mensaje += soloSimbolosPermitidos ? ' ✔ Símbolo * o #' : ' ❌ Símbolo * o #';
+                mensaje += tieneNumero ? ' ✔ Número' : ' ❌ Número';
+
+                caracteristicasContraseña.html(mensaje);
+            });
+        });
+    </script>
+</body>
+</html>
+

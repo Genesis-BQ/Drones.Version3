@@ -1,0 +1,118 @@
+﻿body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Añadido para centrar el texto en el body */
+    background: url(../Imagenes/incio.jpg) center center fixed; /* Añadido para establecer la imagen de fondo */
+    background-size: cover; /* Añadido para cubrir todo el fondo */
+}
+
+header {
+    background-color: #000000;
+    padding: 20px 0;
+}
+
+.caja {
+    max-width: 940px; /* Cambiado a 'max-width' para hacerlo responsivo */
+    margin: 0 auto;
+    position: relative;
+}
+
+nav {
+    position: absolute;
+    top: 110px;
+    right: 0;
+}
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav li {
+        display: inline;
+        margin: 0 15px 0 0;
+    }
+
+    nav a {
+        text-transform: uppercase;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 22px;
+        text-decoration: none;
+    }
+
+        nav a:hover {
+            color: #c78c19;
+            text-decoration: underline;
+        }
+
+h2 {
+    color: #333; /* Color del título */
+    margin-top: 20px;
+    margin-bottom: 150px; /* Añadido para separar el h2 del formulario */
+    font-size: 45px;
+}
+
+form {
+    margin-top: -10px;
+    margin-bottom: 150px;
+    display: inline-block; /* Añadido para alinear el formulario al centro */
+}
+
+label {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 5px;
+    color: #333; /* Color del texto */
+}
+
+input {
+    font-size: 16px;
+    padding: 8px;
+    width: 200px;
+}
+
+button {
+    font-size: 16px;
+    background-color: #000; /* Color de fondo negro */
+    color: #fff; /* Color del texto blanco */
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+hr {
+    margin: 20px 0;
+    border-color: #666; /* Color de la línea gris oscuro */
+}
+
+table {
+    width: 80%;
+    margin: 0 auto; /* Centra la tabla horizontalmente */
+    background-color: #ddd; /* Color de fondo gris claro para la tabla */
+    border-collapse: collapse;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #999; /* Borde gris para celdas */
+}
+
+p {
+    color: #FFFFFF; /* Color del texto */
+}
+
+footer {
+    text-align: center;
+    background: url(../Imagenes/black.jpg);
+    padding: 20px;
+    color: #ffffff; /* Añadido para asegurar contraste con el fondo */
+}
+
+.copyright {
+    font-size: 13px;
+    margin: 20px;
+}

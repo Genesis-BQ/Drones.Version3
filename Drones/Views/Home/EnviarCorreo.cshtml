@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Enviar Correo</title>
+    <link rel="stylesheet" type="text/css" href="~/css/enviarCorreo.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Recuperar Contraseña</h2>
+        <form action="ObtenerPreguntas" method="post">
+            <div>
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" required />
+            </div>
+            <div>
+                <input type="submit" value="Enviar" />
+            </div>
+        </form>
+        <div>
+            <p id="error-message"></p>
+        </div>
+    </div>
+    <script>var errorMessage = "";
+        document.getElementById('error-message').innerText = errorMessage;</script>
+</body>
+</html>

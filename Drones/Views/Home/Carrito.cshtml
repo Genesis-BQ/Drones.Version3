@@ -1,0 +1,128 @@
+﻿@model List<Drones.Models.Carrito>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Carrito</title>
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/Carritos.css">
+    @*<link rel="stylesheet" href="~/css/Carrito.css">*@
+</head>
+<body>
+    <header>
+        <div class="caja">
+            <a href="#"><h1><img src="~/Logo/logo-blanco.png" width="190" height="190"></h1></a>
+            <nav>
+                <ul>
+                    <li><a href="@Url.Action("Home", "Home")">Home</a></li>
+                    @*<li><a href="@Url.Action("Drones", "Home")">Drones</a></li>
+                    <li><a href="@Url.Action("Traktor", "Home")">Tractores</a></li>*@
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="Tabla">
+        <h1 class="titulo_principal">Carrito de Compras</h1>
+        <table border="1">
+            <tr>
+                <th>Numero Serie</th>
+                <th>Modelo</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Precio Total</th>
+                <th>Actualizar Cantidad</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Numero_Serie</td>
+                    <td>@item.Modelo</td>
+                    <td>@item.Cantidad</td>
+                    <td>@item.Precio</td>
+                    <td>@item.Precio_Total</td>
+                    <td>
+                        <form action="@Url.Action("ActualizarCantidad", "Home")" method="post">
+                            <input type="hidden" name="numeroSerie" value="@item.Numero_Serie" />
+                            <label for="nuevaCantidad">Nueva Cantidad:</label>
+                            <input type="number" name="nuevaCantidad" value="@item.Cantidad" />
+                            <input type="submit" value="Actualizar" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table><br /><br />
+    </div>
+
+    <div class="Pago">
+        <h1 class="subtitulo">Selecciona un método de pago:</h1><br /><br />
+
+        <label for="formaPago">Forma de pago:</label>
+        <select id="formaPago" name="formaPago">
+            <option value="paypal">PayPal</option>
+            <option value="transferencia">Transferencia bancaria</option>
+            <option value="tarjeta">Tarjeta de crédito</option>
+        </select><br /><br />
+
+        <br>
+
+        <button class="siguiente" onclick="siguiente()">Siguiente</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Aplicar el efecto al botón "Siguiente" en hover
+            $(".siguiente").on({
+                mouseenter: function () {
+                    $(this).css({
+                        "background-color": "#c78c19",
+                        "color": "white",
+                        "transform": "scale(1.2)",
+                        "border-radius": "20px"
+                    });
+                },
+                mouseleave: function () {
+                    $(this).css({
+                        "background-color": "#000000",
+                        "transform": "scale(1)",
+                        "border-radius": "10px"
+                    });
+                }
+            });
+
+            // Código para manejar el clic en el botón "Siguiente"
+            $(".siguiente").on("click", function () {
+                var formaDePago = $("#formaPago").val();
+
+                if (formaDePago) {
+                    // Redirigir a la página correspondiente según la forma de pago
+                    switch (formaDePago) {
+                        case "paypal":
+                            window.location.href = "@Url.Action("Paypal", "Home")";
+                            break;
+                        case "tarjeta":
+                            window.location.href = "@Url.Action("Tarjeta", "Home")";
+                            break;
+                        case "transferencia":
+                            window.location.href = "@Url.Action("Tranferencia", "Home")";
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    alert("Por favor, selecciona una forma de pago antes de continuar.");
+                }
+            });
+        });
+    </script>
+
+
+
+</body>
+</html>

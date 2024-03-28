@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Token</title>
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/Token.css">
+</head>
+<body>
+    <form action="/Home/Token" method="post">
+        <div class="container">
+            <h2>Token</h2>
+
+            @if (!string.IsNullOrEmpty(ViewBag.MensajeError))
+            {
+                <p style="color: red;">@ViewBag.MensajeError</p>
+            }
+            <label for="codigo">Código de confirmación:</label>
+            <input type="text" id="codigo" name="codigoIngresado" required>
+            <br>
+            <div class="token-button">
+                <button id="tokenButton" type="submit">Verificar Código</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

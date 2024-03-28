@@ -1,0 +1,83 @@
+﻿body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: url(../Imagenes/incio.jpg) center center fixed;
+    background-size: cover;
+}
+
+header {
+    background-color: #000000;
+    padding: 20px 0;
+}
+
+.caja {
+    max-width: 940px;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+
+nav {
+    position: static;
+    margin-top: 20px;
+    text-align: center;
+}
+
+    nav li {
+        display: block;
+        margin: 0 0 10px 0;
+    }
+
+    nav a {
+        text-transform: uppercase;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+        nav a:hover {
+            color: #c78c19;
+            text-decoration: underline;
+        }
+
+footer {
+    text-align: center;
+    background: url(../Imagenes/black.jpg);
+    padding: 20px;
+}
+
+.copyright {
+    color: #ffffff;
+    font-size: 13px;
+    margin: 20px;
+}
+
+.resultado {
+    margin: 0;
+    padding: 0;
+    background: url(../Imagenes/incio.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Media query para tamaños de pantalla de 480px a 768px */
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+    .caja {
+        width: 100%;
+    }
+
+    nav li {
+        margin: 0;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+}

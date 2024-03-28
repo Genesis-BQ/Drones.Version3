@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Total a Pagar</title>
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/Paypal.css">
+</head>
+<body>
+    <div class="container">
+        <div class="paypal-logo">
+            <img class="img" src="~/Imagenes/logo-Paypal.png" alt="PayPal Logo">
+        </div>
+        <div class="container">
+            <h2>Total a Pagar</h2>
+            <p>Identificación del Usuario: @ViewBag.IdentificacionUsuario</p>
+            <p>Total a Pagar: @ViewBag.TotalAPagar</p>
+        </div>
+        <div class="paypal-button">
+            <button id="payButton" onclick="processPayment()">Pagar con PayPal</button>
+        </div>
+    </div>
+    <script>
+        function processPayment() {
+            // Redirigir a la página de inicio de sesión de PayPal
+            window.location.href = "@Url.Action("loginPaypal", "Home")";
+        }
+    </script>
+</body>
+</html>

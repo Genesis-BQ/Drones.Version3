@@ -1,0 +1,143 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Drones Blue and White Robotics</title>
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/Homen.css">
+    <link rel="stylesheet" href="~/css/boton.css">
+    @*<link rel="stylesheet" href="~/css/Home.css">*@
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="caja">
+            <a href="#"><h1><img src="~/Logo/logo-blanco.png" width="190" height="190"></h1></a>
+            <nav>
+                <ul>
+                    <li><a href="@Url.Action("Home", "Home")">Home</a></li>
+                    <li><a href="@Url.Action("Drones", "Home")">Drones</a></li>
+                    <li><a href="@Url.Action("Traktor", "Home")">Tractores</a></li>
+                    <li><a href="@Url.Action("Carrito", "Home")">Carrito</a></li>
+                    <li>
+                        <button id="cerrarSesionBtn" class="button">
+                            <div class="button-box">
+                                <span class="button-elem">
+                                    <svg viewBox="0 0 46 40" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"></path>
+                                    </svg>
+                                </span>
+                                <span class="button-elem">
+                                    <svg viewBox="0 0 46 40">
+                                        <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                        </button>
+                        <a href="#">Salir</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <img class="dron" src="~/Imagenes/dron.jpg">
+
+    <main>
+        <section class="principal">
+            <h2 class="titulo-principal">Drones Blue and White Robotics</h2>
+
+            <img class="drones" src="~/Imagenes/drones.jpg" alt="Imagen de un dron">
+
+            <p id="frase">
+                <em>
+                    Misión: <strong>
+                        Facilitar soluciones innovadoras y sostenibles a través de la gestión
+                        de herramientas autónomas aéreas y terrestres.
+                    </strong>
+                </em>
+            </p>
+
+            <p id="frase">
+                <em>
+                    Visión: <strong>
+                        Aspiramos a liderar la revolución tecnológica en el campo de la gestión autónoma,
+                        siendo reconocidos a nivel mundial por nuestras soluciones vanguardistas.
+                    </strong>
+                </em>
+            </p>
+
+
+        </section>
+
+
+        <section class="mapa">
+            <h3 class="titulo-principal">Nuestra Ubicación</h3>
+            <p>Nuestra empresa se encuentra Tel Aviv Israel.</p>
+            <div class="mapa-contenido">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108169.74968955315!2d34.71484407360052!3d32.08805027642674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4ca6193b7c1f%3A0xc1fb72a2c0963f90!2sTel%20Aviv-Yafo%2C%20Israel!5e0!3m2!1ses-419!2scr!4v1706192334719!5m2!1ses-419!2scr"
+                        width="100%" height="300" style="border:0;"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+
+
+        <section class="dato">
+            <h3 class="titulo-principal">Estamos contigo en cada paso del camino</h3>
+
+            <div class="contenido-dato">
+                <ul class="lista-datos">
+                    <li class="item">
+                        Nuestro equipo de soporte remoto y en campo las 24 horas,
+                        los 7 días de la semana,
+                        está comprometido con el éxito de su granja autónoma.
+                    </li>
+                </ul><img src="~/Imagenes/personas.jpg" class="imagen-dato">
+            </div>
+
+        </section>
+
+        <section class="datos">
+            <h3 class="titulo-diferenciales">La seguridad está integrada en todo lo que hacemos</h3>
+
+            <div class="contenido-datos">
+                <ul class="lista-datos">
+                    <li class="items">
+                        Después de completar miles de horas de campo, sabemos cómo optimizar el rendimiento y la seguridad,
+                        por eso nuestra plataforma está equipada con capas de redundancia de seguridad, lo que le brinda tranquilidad.</p>
+                </ul><img src="~/Imagenes/drongif.gif" class="imagen-datos">
+            </div>
+
+            <div class="video">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/3w9jM4Z0Ia0?si=IPzat2ig49UqcrxC"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+
+            </div>
+        </section>
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('#cerrarSesionBtn').on('click', function() {
+            // Aquí puedes agregar el código para cerrar la sesión
+            // Por ejemplo, puedes redirigir al usuario al index
+            window.location.href ="@Url.Action("Index", "Home")"; // Ajusta la ruta según tu configuración
+        });
+    });
+    </script>
+    <footer>
+        <img src="~/Logo/logo-blanco.png" width="190" height="190">
+        <p class="copyright">&copy Copyright Drones Blue and White Robotics - 2024</p>
+    </footer>
+</body>
+</html>

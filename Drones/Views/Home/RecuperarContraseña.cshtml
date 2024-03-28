@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Recuperar Contraseña</title>
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/Token.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Recuperar Contraseña</h2>
+
+        @if (!string.IsNullOrEmpty(ViewBag.MensajeError))
+        {
+            <p style="color: red;">@ViewBag.MensajeError</p>
+        }
+        @if (!string.IsNullOrEmpty(ViewBag.Mensaje))
+        {
+            <p style="color: green;">@ViewBag.Mensaje</p>
+        }
+
+        <form action="ObtenerPreguntas" method="post">
+            @Html.AntiForgeryToken()
+            <div>
+                <label for="Correo">Correo:</label>
+                <input type="email" id="Correo" name="Correo" required>
+            </div>
+            <div class="token-button">
+                <button id="tokenButton" type="submit" name="submit" value="Enviar Código de Recuperación">Enviar Código de Recuperación</button>
+            </div>
+        </form>
+
+        <hr>
+
+    </div>
+</body>
+</html>
+

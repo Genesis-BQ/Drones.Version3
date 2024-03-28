@@ -1,0 +1,50 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background: url(../Imagenes/incio.jpg) center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #ffffff6e;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.back-link a {
+    color: #4CAF50; 
+    text-decoration: none; 
+    font-size: 18px; 
+}
+
+.input-padrom {
+    display: block;
+    margin: 0 auto 20px; /* Center horizontally with auto margins */
+    padding: 10px 25px;
+    width: 50%;
+    text-align: center;
+}
+.token-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#tokenButton {
+    background-color: #003087;
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    #tokenButton:hover {
+        background-color: #001f4e;
+    }

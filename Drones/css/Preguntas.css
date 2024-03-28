@@ -1,0 +1,81 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background: url(../Imagenes/incio.jpg) center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #ffffff6e;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px; 
+}
+
+.btn {
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 14px 20px; 
+    margin: 8px 0; 
+    border: none; 
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px; 
+    border-radius: 10px; 
+}
+
+.back-link a {
+    color: #4CAF50; 
+    text-decoration: none; 
+    font-size: 18px; 
+}
+
+.error-message {
+    color: red; 
+    font-size: 18px; 
+}
+
+.input-padrom {
+    display: block;
+    margin: 0 auto 20px; 
+    padding: 10px 25px;
+    width: 50%;
+    text-align: center;
+}
+
+.token-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#tokenButton {
+    background-color: #003087;
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    #tokenButton:hover {
+        background-color: #001f4e;
+    }

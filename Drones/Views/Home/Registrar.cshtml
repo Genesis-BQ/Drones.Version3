@@ -1,0 +1,196 @@
+﻿@model Drones.Models.Usuario
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Drones Blue and White Robotics</title>
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/Registro.css">
+
+    @*<link rel="stylesheet" href="~/css/formulario.css">*@
+</head>
+<body>
+    <header>
+        <div class="caja">
+            <a href="#"><h1><img src="~/Logo/logo-blanco.png" width="190" height="190"></h1></a>
+        </div>
+    </header>
+    <main class="formulario">
+        <form method="post" action="/Home/CargarDatos">
+            <label for="identificacion"> Identificación </label>
+            <input type="text" id="identificacion" name="identificacion" class="input-padrom" required>
+
+            <label for="nombre"> Nombre </label>
+            <input type="text" id="nombre" name="nombre" class="input-padrom" required>
+
+            <label for="apellido"> Apellido </label>
+            <input type="text" id="apellido" name="apellido" class="input-padrom" required>
+
+            <div>
+                @Html.LabelFor(m => m.Provincia, "Provincia:")
+                @Html.DropDownListFor(m => m.Provincia, new SelectList(new List<string> { "San José", "Cartago", "Alajuela", "Heredia", "Guanacaste", "Puntarenas", "Limón" }), "Seleccione una provincia")
+                @Html.ValidationMessageFor(m => m.Provincia)
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.Canton, "Cantón:")
+                @Html.DropDownListFor(m => m.Canton, new SelectList(new List<string>(), "Seleccione un cantón"))
+                @Html.ValidationMessageFor(m => m.Canton)
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.Distrito, "Distrito:")
+                @Html.DropDownListFor(m => m.Distrito, new SelectList(new List<string>(), "Seleccione un distrito"))
+                @Html.ValidationMessageFor(m => m.Distrito)
+            </div>
+
+            <label for="residencia"> Dirección exacta </label>
+            <input type="text" id="residencia" name="residencia" class="input-padrom" required>
+
+            <label for="telefono"> Telefono </label>
+            <input type="text" id="telefono" name="telefono" class="input-padrom" required placeholder="xxxx xxxx">
+
+            <label for="correoelectronico"> Correo Electrónico </label>
+            <input type="email" id="correoelectronico" name="correo" class="input-padrom" required placeholder="email@dominio.com">
+
+            <label for="pregunta1"> Pregunta de seguridad 1 </label>
+            <select id="pregunta1" name="pregunta1" class="pregunta-seguridad" required>
+                <option value="">Seleccionar pregunta...</option>
+                @foreach (var pregunta in Model.PreguntasSeguridad)
+                {
+                    <option value="@pregunta.PreguntaID">@pregunta.Pregunta</option>
+                }
+            </select><br /><br />
+            <input type="text" id="respuesta1" name="respuesta1" class="input-padrom" required placeholder="Respuesta 1">
+
+            <label for="pregunta2"> Pregunta de seguridad 2 </label>
+            <select id="pregunta2" name="pregunta2" class="pregunta-seguridad" required>
+                <option value="">Seleccionar pregunta...</option>
+                @foreach (var pregunta in Model.PreguntasSeguridad)
+                {
+                    <option value="@pregunta.PreguntaID">@pregunta.Pregunta</option>
+                }
+            </select><br /><br />
+            <input type="text" id="respuesta2" name="respuesta2" class="input-padrom" required placeholder="Respuesta 2">
+
+            <label for="pregunta3"> Pregunta de seguridad 3 </label>
+            <select id="pregunta3" name="pregunta3" class="pregunta-seguridad" required>
+                <option value="">Seleccionar pregunta...</option>
+                @foreach (var pregunta in Model.PreguntasSeguridad)
+                {
+                    <option value="@pregunta.PreguntaID">@pregunta.Pregunta</option>
+                }
+            </select><br /><br />
+            <input type="text" id="respuesta3" name="respuesta3" class="input-padrom" required placeholder="Respuesta 3">
+
+            <label for="contrasena"> Contraseña </label>
+            <input type="password" id="contrasena" name="contraseña" class="input-padrom" required>
+            <span id="caracteristicasContraseña"></span>
+
+            <label for="contrasena"> Confirmar contraseña </label>
+            <input type="password" id="ConfirmarContraseña" name="confirmarContraseña" class="input-padrom" required>
+            <span id="errorConfirmarContraseña" class="text-danger"></span>
+
+            <input type="submit" value="Enviar formulario" class="enviar">
+        </form>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Efecto de desvanecimiento al cargar la página
+            $(".formulario").hide().fadeIn(1000);
+
+            // Efecto de resaltado al enfocar un campo de entrada
+            $("input[type=text], input[type=password]").focus(function () {
+                $(this).animate({ backgroundColor: "#f6eafd" }, 500);
+            });
+
+            // Efecto de sacudida al enviar el formulario con campos vacíos o contraseñas no coincidentes
+            $("form").submit(function (e) {
+                var contraseña = $("#contrasena").val();
+                var confirmarContraseña = $("#ConfirmarContraseña").val();
+
+                // Verificar si las contraseñas no coinciden
+                if (contraseña !== confirmarContraseña) {
+                    e.preventDefault();
+                    $("#errorConfirmarContraseña").text("Las contraseñas no coinciden.");
+                    $("#ConfirmarContraseña").css("border-color", "red");
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var contraseñaInput = $("#contrasena");
+            var caracteristicasContraseña = $("#caracteristicasContraseña");
+
+            // Efecto de resaltado al enfocar un campo de entrada
+            $("input[type=password]").focus(function () {
+                $(this).animate({ backgroundColor: "#f6eafd" }, 500);
+            });
+
+            // Actualizar las características de la contraseña mientras se escribe
+            contraseñaInput.on('input', function () {
+                var contraseña = contraseñaInput.val();
+                var tieneMayuscula = /[A-Z]/.test(contraseña);
+                var tieneMinuscula = /[a-z]/.test(contraseña);
+                var soloSimbolosPermitidos = /[\*#]/.test(contraseña);
+                var tieneNumero = /\d/.test(contraseña);
+
+                var mensaje = 'Contraseña:';
+                mensaje += tieneMayuscula ? ' ✔ Mayúscula' : ' ❌ Mayúscula';
+                mensaje += tieneMinuscula ? ' ✔ Minúscula' : ' ❌ Minúscula';
+                mensaje += soloSimbolosPermitidos ? ' ✔ Símbolo * o #' : ' ❌ Símbolo * o #';
+                mensaje += tieneNumero ? ' ✔ Número' : ' ❌ Número';
+
+                caracteristicasContraseña.html(mensaje);
+            });
+        });
+    </script>
+    <script>
+    $(document).ready(function () {
+        $("#Provincia").change(function () {
+            var provincia = $(this).val();
+            $.ajax({
+                url: "@Url.Action("ObtenerCantones", "Home")",
+                type: "GET",
+                data: { provincia: provincia },
+                success: function (data) {
+                    var selectCanton = $("#Canton");
+                    selectCanton.empty();
+                    $.each(data, function (index, value) {
+                        selectCanton.append($("<option></option>").val(value).html(value));
+                    });
+                }
+            });
+        });
+
+        $("#Canton").change(function () {
+            var provincia = $("#Provincia").val();
+            var canton = $(this).val();
+            $.ajax({
+                url: "@Url.Action("ObtenerDistritos", "Home")",
+                type: "GET",
+                data: { provincia: provincia, canton: canton },
+                success: function (data) {
+                    var selectDistrito = $("#Distrito");
+                    selectDistrito.empty();
+                    $.each(data, function (index, value) {
+                        selectDistrito.append($("<option></option>").val(value).html(value));
+                    });
+                }
+            });
+        });
+    });
+    </script>
+
+</body>
+</html>
+
+

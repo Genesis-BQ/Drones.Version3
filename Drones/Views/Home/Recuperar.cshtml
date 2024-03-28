@@ -1,0 +1,62 @@
+﻿
+@model Drones.Models.PreguntasViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Preguntas de Seguridad</title>
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/Preguntas.css">
+</head>
+<body>
+    <div id="container">
+            @if (Model != null)
+            {
+                <div class="container">
+                    <h2>Preguntas de Seguridad</h2> <br />
+                    @using (Html.BeginForm("ValidarRespuestas", "Home", FormMethod.Post, new { @class = "form" }))
+                    {
+                        <div class="form-group">
+                            <p>Pregunta 1: @Model.Pregunta1</p>
+                            <input type="text" name="respuesta1" class="input-field" required />
+                        </div>
+                        <div class="form-group">
+                            <p>Pregunta 2: @Model.Pregunta2</p>
+                            <input type="text" name="respuesta2" class="input-field" required />
+                        </div>
+                        <div class="form-group">
+                            <p>Pregunta 3: @Model.Pregunta3</p>
+                            <input type="text" name="respuesta3" class="input-field" required />
+                        </div>
+                        <input type="hidden" name="correo" value="@Model.Correo" />
+                        <div class="token-button">
+                            <button id="tokenButton" type="submit" name="submitButton" class="btn">Confirmar</button>
+                        </div>
+                        <div class="back-link">
+                            <a href="@Url.Action("RecuperarContraseña", "Home")">Atrás</a>
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                    {
+                        <div class="error-message">
+                            <p>@ViewBag.ErrorMessage</p>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div>
+                    <p>Por favor, envía tu correo electrónico primero para recuperar las preguntas de seguridad.</p>
+                </div>
+            }
+
+    </div>
+</body>
+</html>
